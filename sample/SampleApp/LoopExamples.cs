@@ -5,6 +5,7 @@ public static class LoopExamples
 {
     public static void Run()
     {
+        Console.WriteLine();
         Console.WriteLine("LOOP examples");
         Console.WriteLine("----------------");
 
