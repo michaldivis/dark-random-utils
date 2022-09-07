@@ -64,13 +64,15 @@ public class RandomPicker
 
         while (true)
         {
+            var randomWeight = _random.Next(1, weightSum);
+
+            var currentWeightSum = 0;
+
             for (int i = 0; i < items.Count; i++)
             {
-                //get random weight from 1 to weightSum
-                var randomWeight = _random.Next(1, weightSum);
+                currentWeightSum += items[i].Weight;
 
-                //return the item if randomWeight is less than of equal to the current item's Weight
-                if(randomWeight <= items[i].Weight)
+                if (currentWeightSum >= randomWeight)
                 {
                     return items[i].Value;
                 }

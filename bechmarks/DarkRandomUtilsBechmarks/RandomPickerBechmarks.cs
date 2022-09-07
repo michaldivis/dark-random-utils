@@ -1,6 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
 using DarkRandomUtils;
-using System;
 
 namespace DarkRandomUtilsBechmarks;
 
@@ -10,8 +9,10 @@ public class RandomPickerBechmarks
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     private RandomPicker _randomPicker;
-    private List<string> _items;
-    private List<WeightedPick<string>> _weightedItems;
+    private List<int> _fewItems;
+    private List<WeightedPick<int>> _fewWeightedItems;
+    private List<int> _manyItems;
+    private List<WeightedPick<int>> _manyWeightedItems;
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     [GlobalSetup]
@@ -19,26 +20,44 @@ public class RandomPickerBechmarks
     {
         _randomPicker = new(Random.Shared);
 
-        _items = new() { "Bjorn", "Helmut", "Nabeel", "Amelia" };
+        _fewItems = new() { 1, 2, 3, 4 };
 
-        _weightedItems = new()
+        _fewWeightedItems = new()
         {
-            new("Bjorn", 3),
-            new("Helmut", 1),
-            new("Nabeel", 2),
-            new("Amelia", 4)
+            new(1, 3),
+            new(2, 1),
+            new(3, 2),
+            new(4, 4)
         };
+
+        _manyItems = Enumerable.Range(1, 10_000).ToList();
+
+        _manyWeightedItems = Enumerable.Range(1, 10_000)
+            .Select(a => new WeightedPick<int>(a, Random.Shared.Next(1, 100)))
+            .ToList();
     }
 
     [Benchmark]
-    public void Pick()
+    public void Pick_Few()
     {
-        _randomPicker.Pick(_items);
+        _randomPicker.Pick(_fewItems);
     }
 
     [Benchmark]
-    public void PickWeighted()
+    public void Pick_Many()
     {
-        _randomPicker.PickWeighted(_weightedItems);
+        _randomPicker.Pick(_manyItems);
+    }
+
+    [Benchmark]
+    public void PickWeighted_Few()
+    {
+        _randomPicker.PickWeighted(_fewWeightedItems);
+    }
+
+    [Benchmark]
+    public void PickWeighted_Many()
+    {
+        _randomPicker.PickWeighted(_manyWeightedItems);
     }
 }

@@ -14,7 +14,7 @@ public class RandomPickerTests
     [Fact]
     public void PickWeighted_ShouldBeBiasedByWeight()
     {
-        uint tolerance = 1500;
+        uint tolerance = 1_000;
 
         var weightedNames = new WeightedPick<string>[]
         {
