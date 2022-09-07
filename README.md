@@ -6,10 +6,6 @@ C# randomization helpers - random picker, weighted picks, loop.
 
 ## Nuget
 
-### The core package
-
-This is the main package. Contains all the music stuff, like notes, scales, etc.
-
 [![Nuget](https://img.shields.io/nuget/v/Divis.DarkRandomUtils?label=Divis.DarkRandomUtils)](https://www.nuget.org/packages/Divis.DarkRandomUtils/)
 
 DarkRandomUtils is available using [nuget](https://www.nuget.org/packages/Divis.DarkRandomUtils/). To install DarkRandomUtils, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)
