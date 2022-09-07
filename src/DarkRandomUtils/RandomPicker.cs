@@ -9,13 +9,13 @@ public class RandomPicker
         _randomGenerator = randomGenerator;
     }
 
-    public T PickRandom<T>(List<T> items)
+    public T Pick<T>(List<T> items)
     {
         var index = _randomGenerator.Next(0, items.Count);
         return items[index];
     }
 
-    public T PickRandom<T>(params T[] items)
+    public T Pick<T>(params T[] items)
     {
         var index = _randomGenerator.Next(0, items.Length);
         return items[index];
