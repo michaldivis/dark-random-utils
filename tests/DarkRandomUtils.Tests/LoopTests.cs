@@ -6,21 +6,21 @@ public class LoopTests
 
     public LoopTests()
     {
-        _loop = new Loop<int>(4, 6, 8, 1, 18);
+        _loop = Loop.Create(4, 6, 8, 1, 18);
     }
 
     [Fact]
-    public void Ctor_ShouldThrow_WhenItemsEmpty()
+    public void Create_ShouldThrow_WhenItemsEmpty()
     {
-        Action act = () => new Loop<int>();
+        Action act = () => Loop.Create(Array.Empty<string>());
         act.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void Ctor_ShouldThrow_WhenItemsNull()
+    public void Create_ShouldThrow_WhenItemsNull()
     {
         List<int> items = null!;
-        Action act = () => new Loop<int>(items);
+        Action act = () => Loop.Create(items);
         act.Should().Throw<ArgumentNullException>();
     }
 
