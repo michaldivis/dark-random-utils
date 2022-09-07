@@ -6,4 +6,27 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<PropertyGroup>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>Divis.DarkRandomUtils</PackageId>
+		<Version>0.1.0</Version>
+		<Authors>michaldivis</Authors>
+		<Company>Michal Diviš</Company>
+		<Product>Dark Random Utils</Product>
+		<Description>C# randomization helpers - random picker, weighted picks.</Description>
+		<PackageProjectUrl>https://github.com/michaldivis/dark-random-utils</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/michaldivis/dark-random-utils</RepositoryUrl>
+		<PackageTags>random, picker, weighted pick</PackageTags>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>icon.png</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\assets\icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
 </Project>
