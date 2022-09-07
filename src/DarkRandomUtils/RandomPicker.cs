@@ -2,22 +2,22 @@
 
 public class RandomPicker
 {
-    private readonly ThreadSafeRandomGenerator _randomGenerator;
+    private readonly Random _random;
 
-    public RandomPicker(ThreadSafeRandomGenerator randomGenerator)
+    public RandomPicker(Random random)
     {
-        _randomGenerator = randomGenerator;
+        _random = random;
     }
 
     public T Pick<T>(List<T> items)
     {
-        var index = _randomGenerator.Next(0, items.Count);
+        var index = _random.Next(0, items.Count);
         return items[index];
     }
 
     public T Pick<T>(params T[] items)
     {
-        var index = _randomGenerator.Next(0, items.Length);
+        var index = _random.Next(0, items.Length);
         return items[index];
     }
 
@@ -35,7 +35,7 @@ public class RandomPicker
 
         var numberOfOptions = items.Sum(a => a.Weight);
 
-        var index = _randomGenerator.Next(0, numberOfOptions);
+        var index = _random.Next(0, numberOfOptions);
 
         return options[index];
     }
@@ -54,7 +54,7 @@ public class RandomPicker
 
         var numberOfOptions = items.Sum(a => a.Weight);
 
-        var index = _randomGenerator.Next(0, numberOfOptions);
+        var index = _random.Next(0, numberOfOptions);
 
         return options[index];
     }
