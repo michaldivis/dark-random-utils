@@ -29,7 +29,7 @@ public static class RandomPickerExamples
             new("Amelia", 4) //40% chance of getting picked
         };
 
-        var weightedRandomName = picker.PickWeighted(weightedNames);
+        var weightedRandomName = picker.PickWeightedOptimized(weightedNames);
         Console.WriteLine($"Randomly picked weighted name: {weightedRandomName}");
 
         //output:

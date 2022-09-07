@@ -43,7 +43,7 @@ public class RandomPicker
     /// </summary>
     /// <param name="items">Weigthed items to pick from</param>
     /// <returns>One randomly picked item</returns>
-    public T PickWeighted<T>(IEnumerable<WeightedPick<T>> items)
+    public T PickWeighted<T>(IList<WeightedPick<T>> items)
     {
         return PickWeightedInternal(items);
     }
@@ -58,22 +58,23 @@ public class RandomPicker
         return PickWeightedInternal(items);
     }
 
-    public T PickWeightedInternal<T>(IEnumerable<WeightedPick<T>> items)
+    public T PickWeightedInternal<T>(IList<WeightedPick<T>> items)
     {
-        var options = new List<T>();
+        var weightSum = items.Sum(a => a.Weight);
 
-        foreach (var item in items)
+        while (true)
         {
-            for (int i = 0; i < item.Weight; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-                options.Add(item.Value);
+                //get random weight from 1 to weightSum
+                var randomWeight = _random.Next(1, weightSum);
+
+                //return the item if randomWeight is less than of equal to the current item's Weight
+                if(randomWeight <= items[i].Weight)
+                {
+                    return items[i].Value;
+                }
             }
         }
-
-        var numberOfOptions = items.Sum(a => a.Weight);
-
-        var index = _random.Next(0, numberOfOptions);
-
-        return options[index];
     }
 }

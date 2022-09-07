@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using DarkRandomUtils;
+using System;
 
 namespace DarkRandomUtilsBechmarks;
 
