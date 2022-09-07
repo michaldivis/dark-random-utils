@@ -58,7 +58,7 @@ public class RandomPicker
         return PickWeightedInternal(items);
     }
 
-    public T PickWeightedInternal<T>(IList<WeightedPick<T>> items)
+    private T PickWeightedInternal<T>(IList<WeightedPick<T>> items)
     {
         var weightSum = items.Sum(a => a.Weight);
 
